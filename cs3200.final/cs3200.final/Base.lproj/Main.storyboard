@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="cs3200_final" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yfx-sM-acD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="ETf-os-wok">
+                                <rect key="frame" x="0.0" y="61" width="375" height="405"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CNZ-Tq-Tyk">
+                                <rect key="frame" x="0.0" y="61" width="375" height="405"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGJ-IP-dSI">
+                                <rect key="frame" x="23" y="20" width="32" height="30"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="saveImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eUi-i3-B5h"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWs-pl-W06">
+                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="f6i-AX-uY3"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CNZ-Tq-Tyk" firstAttribute="leading" secondItem="ETf-os-wok" secondAttribute="leading" id="9ng-RB-imF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ETf-os-wok" secondAttribute="bottom" constant="201" id="A1t-0f-7kO"/>
+                            <constraint firstItem="CNZ-Tq-Tyk" firstAttribute="top" secondItem="ETf-os-wok" secondAttribute="top" id="CbY-6B-xry"/>
+                            <constraint firstItem="ZWs-pl-W06" firstAttribute="top" secondItem="CNZ-Tq-Tyk" secondAttribute="bottom" constant="73" id="Eyk-Hf-5og"/>
+                            <constraint firstItem="ETf-os-wok" firstAttribute="centerX" secondItem="yfx-sM-acD" secondAttribute="centerX" id="F9G-cw-f7U"/>
+                            <constraint firstItem="ETf-os-wok" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="Ik4-Yf-vtf"/>
+                            <constraint firstItem="CNZ-Tq-Tyk" firstAttribute="centerX" secondItem="yfx-sM-acD" secondAttribute="centerX" id="KgS-u9-eB1"/>
+                            <constraint firstItem="ETf-os-wok" firstAttribute="leading" secondItem="yfx-sM-acD" secondAttribute="leading" id="OST-pd-NPW"/>
+                            <constraint firstItem="CNZ-Tq-Tyk" firstAttribute="top" secondItem="cGJ-IP-dSI" secondAttribute="bottom" constant="11" id="WQl-K4-tbw"/>
+                            <constraint firstItem="ZWs-pl-W06" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="dBn-eB-CHO"/>
+                            <constraint firstItem="cGJ-IP-dSI" firstAttribute="leading" secondItem="yfx-sM-acD" secondAttribute="leadingMargin" constant="7" id="e9s-bW-n12"/>
+                            <constraint firstItem="ZWs-pl-W06" firstAttribute="centerX" secondItem="yfx-sM-acD" secondAttribute="centerX" id="gHh-wg-E92"/>
+                            <constraint firstItem="CNZ-Tq-Tyk" firstAttribute="bottom" secondItem="ETf-os-wok" secondAttribute="bottom" id="iAE-of-VGQ"/>
+                            <constraint firstItem="ZWs-pl-W06" firstAttribute="leading" secondItem="CNZ-Tq-Tyk" secondAttribute="leading" id="k4r-fE-c54"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newImage" destination="ETf-os-wok" id="WcU-Bm-Mva"/>
+                        <outlet property="oldImage" destination="CNZ-Tq-Tyk" id="hfH-ms-hsk"/>
+                        <outlet property="saveButton" destination="cGJ-IP-dSI" id="nXq-jz-RM2"/>
+                        <outlet property="scrollBar" destination="ZWs-pl-W06" id="GG3-P1-dfF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="picture" width="900" height="675"/>
+    </resources>
+</document>
