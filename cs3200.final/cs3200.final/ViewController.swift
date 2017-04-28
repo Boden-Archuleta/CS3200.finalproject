@@ -8,18 +8,12 @@
 
 import UIKit
 
-var filterList = [
-    "CIPhotoEffectChrome",
-    "CIPhotoEffectFade",
-    "CIPhotoEffectInstant",
-    "CIPhotoEffectTransfer",
-    ]
-
 class ViewController: UIViewController {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var oldPicture: UIImageView!
     @IBOutlet weak var newPicture: UIImageView!
     @IBOutlet weak var scrollBar: UIScrollView!
+    @IBOutlet weak var save_b: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +82,44 @@ class ViewController: UIViewController {
         scrollBar.addSubview(filterButton3)
         count = count + 1
         
+        //standard filter
+        let filterButton4 = UIButton(type: .custom)
+        filterButton4.frame = CGRect(x: x, y: y, width: w, height: h)
+        filterButton4.tag = count
+        filterButton4.addTarget(self, action: #selector(ViewController.filterButtonTapped(_:)), for: .touchUpInside)
+        filterButton4.layer.cornerRadius = 6
+        filterButton4.clipsToBounds = true
+        let ciContext4 = CIContext(options: nil)
+        let coreImage4 = CIImage(image: oldPicture.image!)
+        let filter4 = CIFilter(name: "CIPhotoEffectChrome" )
+        filter4?.setValue(coreImage4, forKey: kCIInputImageKey)
+        let filteredImageData4 = filter4?.value(forKey: kCIOutputImageKey) as! CIImage
+        let filteredImageRef4 = ciContext4.createCGImage(filteredImageData4, from: filteredImageData4.extent)
+        let imageForButton4 = UIImage(cgImage: filteredImageRef4!)
+        filterButton4.setBackgroundImage(imageForButton4, for: .normal)
+        x +=  w + gap
+        scrollBar.addSubview(filterButton4)
+        count = count + 1
+        
+        //standard filter 
+        let filterButton5 = UIButton(type: .custom)
+        filterButton5.frame = CGRect(x: x, y: y, width: w, height: h)
+        filterButton5.tag = count
+        filterButton5.addTarget(self, action: #selector(ViewController.filterButtonTapped(_:)), for: .touchUpInside)
+        filterButton5.layer.cornerRadius = 6
+        filterButton5.clipsToBounds = true
+        let ciContext5 = CIContext(options: nil)
+        let coreImage5 = CIImage(image: oldPicture.image!)
+        let filter5 = CIFilter(name: "CIPhotoEffectFade" )
+        filter5?.setValue(coreImage5, forKey: kCIInputImageKey)
+        let filteredImageData5 = filter5?.value(forKey: kCIOutputImageKey) as! CIImage
+        let filteredImageRef5 = ciContext5.createCGImage(filteredImageData5, from: filteredImageData5.extent)
+        let imageForButton5 = UIImage(cgImage: filteredImageRef5!)
+        filterButton5.setBackgroundImage(imageForButton5, for: .normal)
+        x +=  w + gap
+        scrollBar.addSubview(filterButton5)
+        count = count + 1
+        
         //update scrollbar
         scrollBar.contentSize = CGSize(width: w * CGFloat(count+2), height: y)
         
@@ -101,13 +133,19 @@ class ViewController: UIViewController {
         let button = sender as UIButton
         newPicture.image = button.backgroundImage(for: UIControlState.normal)
     }
-    
+    @IBAction func saveButton(_ sender: Any) {
+        UIImageWriteToSavedPhotosAlbum(newPicture.image!, nil, nil, nil)
+    }
+    @IBAction func backButton(_ sender: Any) {
+        loadView()
+        viewDidLoad()
+    }
 }
 
 class RedGreen: CIFilter {
     var inputImage: CIImage?
     func createCustomKernel() -> CIColorKernel {
-        let kernelString =
+        let kernel =
             "kernel vec4 chromaKey( __sample s) { \n" +
                 "  vec4 newPixel = s.rgba;" +
                 "  if (newPixel[0] > newPixel[1]) {" +
@@ -120,7 +158,7 @@ class RedGreen: CIFilter {
                 "  return newPixel;\n" +
         "}"
 
-        return CIColorKernel(string: kernelString)!
+        return CIColorKernel(string: kernel)!
     }
     
     override public var outputImage: CIImage! {
@@ -138,7 +176,7 @@ class RedGreen: CIFilter {
 class BlueYellow: CIFilter {
     var inputImage: CIImage?
     func createCustomKernel() -> CIColorKernel {
-        let kernelString =
+        let kernel =
             "kernel vec4 chromaKey( __sample s) { \n" +
                 "  vec4 newPixel = s.rgba;" +
                 "  if (newPixel[2] > newPixel[0] && newPixel[2] > newPixel[1]) {" +
@@ -149,7 +187,7 @@ class BlueYellow: CIFilter {
                 "  newPixel[0] = newPixel[0] * 2.0;" +
                 "  return newPixel;\n" +
         "}"
-        return CIColorKernel(string: kernelString)!
+        return CIColorKernel(string: kernel)!
     }
     
     override public var outputImage: CIImage! {
@@ -167,7 +205,7 @@ class BlueYellow: CIFilter {
 class MonoChrom: CIFilter {
     var inputImage: CIImage?
     func createCustomKernel() -> CIColorKernel {
-        let kernelString =
+        let kernel =
             "kernel vec4 chromaKey( __sample s) { \n" +
                 "  vec4 newPixel = s.rgba;" +
                 "  if (newPixel[0] > newPixel[1]) {" +
@@ -178,7 +216,7 @@ class MonoChrom: CIFilter {
                 "  }" +
                 "  return newPixel;\n" +
         "}"
-        return CIColorKernel(string: kernelString)!
+        return CIColorKernel(string: kernel)!
     }
     
     override public var outputImage: CIImage! {
