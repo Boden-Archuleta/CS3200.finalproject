@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F63793B1E930F4900CB55C1"
+               BlueprintIdentifier = "3F0AB7541EB29F6C00DA3AC8"
                BuildableName = "cs3200.final.app"
                BlueprintName = "cs3200.final"
                ReferencedContainer = "container:cs3200.final.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F63794F1E930F4900CB55C1"
+               BlueprintIdentifier = "3F0AB7681EB29F6D00DA3AC8"
                BuildableName = "cs3200.finalTests.xctest"
                BlueprintName = "cs3200.finalTests"
                ReferencedContainer = "container:cs3200.final.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F63795A1E930F4A00CB55C1"
+               BlueprintIdentifier = "3F0AB7731EB29F6D00DA3AC8"
                BuildableName = "cs3200.finalUITests.xctest"
                BlueprintName = "cs3200.finalUITests"
                ReferencedContainer = "container:cs3200.final.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F63793B1E930F4900CB55C1"
+            BlueprintIdentifier = "3F0AB7541EB29F6C00DA3AC8"
             BuildableName = "cs3200.final.app"
             BlueprintName = "cs3200.final"
             ReferencedContainer = "container:cs3200.final.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F63793B1E930F4900CB55C1"
+            BlueprintIdentifier = "3F0AB7541EB29F6C00DA3AC8"
             BuildableName = "cs3200.final.app"
             BlueprintName = "cs3200.final"
             ReferencedContainer = "container:cs3200.final.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F63793B1E930F4900CB55C1"
+            BlueprintIdentifier = "3F0AB7541EB29F6C00DA3AC8"
             BuildableName = "cs3200.final.app"
             BlueprintName = "cs3200.final"
             ReferencedContainer = "container:cs3200.final.xcodeproj">
